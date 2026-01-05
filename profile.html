@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Profile — CertLab</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <div class="screen">
+    <header class="lp-header">
+	  <a class="home-link" href="landingpage.html" aria-label="Go to Home">
+    <span class="home-text" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight:600; font-size:1rem; letter-spacing:0.04em; color:#111;">HOME</span>
+	  </a>
+    </header>
+
+    <main class="profile-main">
+      <h2 class="title">PROFILE</h2>
+      <div class="hero">
+        <img class="big-avatar" src="pic/bruno.jpg" alt="Bruno Fernandes profile photo">
+        <div class="edit-icon">✎</div>
+      </div>
+
+      <h3 class="user-name">Bruno Fernandes</h3>
+      <div class="user-email">bruno.fernandes@gmail.com</div>
+
+      <h4 class="section">CERTIFICATES</h4>
+      <div class="cert-grid">
+        <div class="cert-tile">
+          <div class="cert-thumb">🎓</div>
+          <div class="cert-meta">
+            <div class="cert-title">ETHICAL HACKING COURSE</div>
+			<button class="view" type="button" onclick="location.href='certificate.html'">VIEW</button>
+          </div>
+        </div>
+
+        <a class="cert-tile plus" href="landingpage.html" aria-label="Get more certificates">
+          <div class="plus-icon">+</div>
+          <div class="cert-meta small">get more certificates</div>
+        </a>
+      </div>
+    </main>
+
+  <button id="logoutBottom" class="logout-bottom" type="button">LOGOUT</button>
+
+  <div id="logoutModal" class="modal" aria-hidden="true" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+      <div id="logoutTitle" class="modal-title">Confirm Logout</div>
+      <div class="modal-text">Are you sure you want to log out?</div>
+      <div class="modal-actions">
+        <button id="logoutNo" class="modal-btn" type="button">No</button>
+        <a id="logoutYes" class="modal-btn primary" href="login.html">Yes</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('logoutBottom');
+      var modal = document.getElementById('logoutModal');
+      var noBtn = document.getElementById('logoutNo');
+      if(!btn) return;
+    if(!modal || !noBtn) return;
+
+    function openModal(){
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal(){
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+      btn.addEventListener('click', function(){
+      openModal();
+      });
+
+    noBtn.addEventListener('click', function(){
+      closeModal();
+    });
+
+    modal.addEventListener('click', function(e){
+      // click outside the card closes
+      if(e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+    });
+    })();
+  </script>
+
+</body>
+</html>

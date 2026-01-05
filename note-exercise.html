@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 1: Intro to HCI</title>
+    <link rel="stylesheet" href="note-exercise.css">
+</head>
+<body>
+    <div class="header">
+        <a href="#" class="back">&lt; Back</a>
+        <span class="title">Lecture 1: Intro to HCI</span>
+        <span class="menu">⋯</span>
+    </div>
+    <div class="pdf-section">
+        <div class="pdf-box">
+            <iframe id="pdf-frame" src="ROLEPLAY_THE_FINALLLLLLE(PRINT).pdf"></iframe>
+            <button class="download-btn" onclick="downloadPDF()" title="Download PDF">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff">
+                    <circle cx="12" cy="12" r="12" fill="#FFA500"/>
+                    <path d="M12 7v6m0 0l-3-3m3 3l3-3M6 17h12" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="exercise-btn" onclick="showModal()">TAKE EXERCISE</button>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <svg width="48" height="48" viewBox="0 0 48 48">
+                    <polygon points="24,6 46,42 2,42" fill="#fff3cd" stroke="#ffcc00" stroke-width="2"/>
+                    <text x="24" y="34" text-anchor="middle" font-size="28" fill="#ffcc00" font-family="Arial" font-weight="bold">!</text>
+                </svg>
+            </div>
+            <div class="modal-text">ARE YOU SURE YOU WANT TO TAKE EXERCISE NOW?</div>
+            <div class="modal-actions">
+                <button class="modal-btn no" onclick="closeModal()" title="Cancel">
+                    <svg width="38" height="38" viewBox="0 0 38 38">
+                        <circle cx="19" cy="19" r="19" fill="#fff"/>
+                        <text x="19" y="26" text-anchor="middle" font-size="28" fill="#ff3b3b" font-family="Arial" font-weight="bold">&#10006;</text>
+                    </svg>
+                </button>
+                <button class="modal-btn yes" onclick="window.location.href='exercise.html'" title="Proceed">
+                    <svg width="38" height="38" viewBox="0 0 38 38">
+                        <circle cx="19" cy="19" r="19" fill="#fff"/>
+                        <text x="19" y="26" text-anchor="middle" font-size="28" fill="#2ecc40" font-family="Arial" font-weight="bold">&#10004;</text>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Back goes to the correct notes menu (ongoing vs completed)
+        (function(){
+            const back = document.querySelector('a.back');
+            if(!back) return;
+            const src = sessionStorage.getItem('mn_source');
+            back.href = (src === 'completed') ? 'menunotescompleted.html' : 'menunotesongoing.html';
+        })();
+
+        function showModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        function downloadPDF() {
+            window.open('ROLEPLAY_THE_FINALLLLLLE(PRINT).pdf', '_blank');
+        }
+        window.onclick = function(event) {
+            var modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
